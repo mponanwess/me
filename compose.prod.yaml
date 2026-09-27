@@ -1,0 +1,11 @@
+name: me
+
+services:
+  nginx:
+    build:
+      context: ./
+      dockerfile: prod.dockerfile
+    container_name: me-nginx
+    ports:
+      - "80:80"
+    restart: unless-stopped
