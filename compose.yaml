@@ -1,6 +1,13 @@
 name: me
 
 services:
+  nginx:
+    image: nginx:1.30.5-alpine
+    container_name: me-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./site/dist:/usr/share/nginx/html:ro
   npm:
     image: node:24.20.0-slim
     working_dir: /usr/src/app
