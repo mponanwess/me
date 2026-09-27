@@ -1,0 +1,24 @@
+# Dépendances : réinstallées par `npm ci` dans l'image.
+**/node_modules
+
+# Sortie de build : reconstruite par l'étape 1.
+site/dist
+
+# Historique git : plusieurs Mo, aucun intérêt pour la construction.
+.git
+.gitignore
+
+# Secrets : ne doivent jamais entrer dans le contexte de build.
+.env
+.env.*
+
+# Outillage de développement : lu par Docker et Compose
+compose.yaml
+*.dockerfile
+.dockerignore
+
+# Bruit
+*.log
+.DS_Store
+.vscode
+.idea
