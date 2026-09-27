@@ -1,0 +1,14 @@
+name: me
+
+services:
+  npm:
+    image: node:24.20.0-slim
+    working_dir: /usr/src/app
+    entrypoint: ["npm"]
+    env_file:
+      - path: .env
+        required: false
+    profiles: ["tools"]
+    user: "${UID:-1000}:${GID:-1000}"
+    volumes:
+      - ./site:/usr/src/app
