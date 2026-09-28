@@ -8,4 +8,18 @@ services:
     container_name: me-nginx
     ports:
       - "80:80"
+      - "443:443"
+    volumes:
+      # Certificats et défis ACME : hors de l'image, car ils se renouvellent
+      # tous les 90 jours. Le SITE, lui, reste dans l'image.
+      - ./certbot/conf:/etc/letsencrypt:ro
+      - ./certbot/www:/var/www/certbot:ro
     restart: unless-stopped
+
+  certbot:
+    image: certbot/certbot
+    container_name: me-certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    profiles: ["tools"]
