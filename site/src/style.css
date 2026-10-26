@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/InterVariable.woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
+/* Palette reprise de jeffgeerling.com : cramoisi et violet en clair,
+   vert et bleu en sombre. Les classes utilisent les noms de @theme ;
+   seules les variables changent avec le thème. */
+:root {
+  --page: #ffffff;
+  --ink: #232333;
+  --muted: #737373;
+  --accent: #dc143c;
+  --accent-hover: #b91c3c;
+  --on-accent: #ffffff;
+  --rule: #663399;
+  --code: #f1f1f1;
 }
 
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/InterVariable-Italic.woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #202124;
+    --ink: #ffffff;
+    --muted: #b0b0b0;
+    --accent: #50fa7b;
+    --accent-hover: #3dd458;
+    --on-accent: #000000;
+    --rule: #0066ff;
+    --code: #3a3a3a;
+  }
 }
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+@theme inline {
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  /* Bleu roi. Mêmes valeurs que public/icon.svg : la page et le favicon
-     restent accordés si l'une des deux change. */
-  --color-brand: #1d4ed8;
-  --color-brand-light: #7c9bff;
+  --color-page: var(--page);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  --color-rule: var(--rule);
+  --color-code: var(--code);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+}
+
+@layer components {
+  /* Le lien façon Geerling : trait épais dessous, fond plein au survol. */
+  .lien {
+    border-bottom: 3px solid var(--accent);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .lien:hover,
+  .lien:focus-visible {
+    background-color: var(--accent-hover);
+    color: var(--on-accent);
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .etiquette {
+    border-radius: 3px;
+    background-color: var(--code);
+    padding: 0.1em 0.5em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.8rem;
+  }
 }
