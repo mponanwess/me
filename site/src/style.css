@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
-/* Palette reprise de jeffgeerling.com : cramoisi et violet en clair,
-   vert et bleu en sombre. Les classes utilisent les noms de @theme ;
-   seules les variables changent avec le thème. */
+/* Bleu roi. Mêmes valeurs que public/icon.svg : la page et le favicon
+   restent accordés si l'une des deux change. Les classes utilisent les
+   noms de @theme ; seules les variables changent avec le thème. */
 :root {
   --page: #ffffff;
   --ink: #232333;
   --muted: #737373;
-  --accent: #dc143c;
-  --accent-hover: #b91c3c;
+  --accent: #1d4ed8;
+  --accent-hover: #1e40af;
   --on-accent: #ffffff;
-  --rule: #663399;
+  --rule: #1d4ed8;
   --code: #f1f1f1;
 }
 
@@ -19,10 +19,10 @@
     --page: #202124;
     --ink: #ffffff;
     --muted: #b0b0b0;
-    --accent: #50fa7b;
-    --accent-hover: #3dd458;
+    --accent: #7c9bff;
+    --accent-hover: #a5b8ff;
     --on-accent: #000000;
-    --rule: #0066ff;
+    --rule: #7c9bff;
     --code: #3a3a3a;
   }
 }
